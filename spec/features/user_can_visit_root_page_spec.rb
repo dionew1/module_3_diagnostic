@@ -11,8 +11,7 @@ feature "User can visit root page" do
 
   scenario "and get search results" do
     visit "/"
-
-    fill_in "search", with: 80203
+    fill_in "search-field", with: 80203
     click_on "locate"
 
     expect(current_path).to eq "/search"
