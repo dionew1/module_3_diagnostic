@@ -15,7 +15,7 @@ feature "User can visit root page" do
     click_on "Locate"
 
     expect(current_path).to eq "/search"
-    expect(stations.count).to eq 10
+    expect(page).to have_content  "8 Closest Stations"
     expect(page).to have_selector "name"
     expect(page).to have_selector "address"
     expect(page).to have_selector "fuel_types"

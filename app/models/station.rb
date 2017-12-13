@@ -15,7 +15,6 @@ class Station
       req.params['location']  = zip
     end
     stations = JSON.parse(response.body)["fuel_stations"]
-    binding.pry
     stations.map do |station|
       Station.new(station)
     end
@@ -23,9 +22,11 @@ class Station
 
   def initialize(station)
     @name         = station["name"]
-    @address      = station[]
+    @address      = station["street_address"]
     @fuel_type    = station["fuel_type_code"]
-    @distance     = station[]
-    @access_times = station[]
+    @distance     = station["distance"]
+    @access_times = station["access_day_time"]
   end
+
+  attr_reader :name, :address, :fuel_type, :distance, :access_times
 end
