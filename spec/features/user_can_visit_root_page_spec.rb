@@ -16,11 +16,11 @@ feature "User can visit root page" do
 
     expect(current_path).to eq "/search"
     expect(page).to have_content  "8 Closest Stations"
-    expect(page).to have_selector "name"
-    expect(page).to have_selector "address"
-    expect(page).to have_selector "fuel_types"
-    expect(page).to have_selector "distance"
-    expect(page).to have_selector "access_times"
+    expect(page).to have_selector ".name"
+    expect(page).to have_selector ".address"
+    expect(page).to have_selector ".fuel_type"
+    expect(page).to have_selector ".distance"
+    expect(page).to have_selector ".access_times"
   end
 end
 

@@ -21,11 +21,11 @@ class Station
   end
 
   def initialize(station)
-    @name         = station["name"]
+    @name         = station["station_name"]
     @address      = station["street_address"]
     @fuel_type    = station["fuel_type_code"]
     @distance     = station["distance"]
-    @access_times = station["access_day_time"]
+    @access_times = station["access_days_time"]
   end
 
   attr_reader :name, :address, :fuel_type, :distance, :access_times
