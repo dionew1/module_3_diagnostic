@@ -1,8 +1,10 @@
 class Station
 
   def self.all(zip)
-    conn = Faraday.new(url: 'https://api.data.gov/nrel/alt-fuel-stations/v1/') do |faraday|
+    conn = Faraday.new(url: 'https://api.data.gov/nrel/alt-fuel-stations/v1/',
+                      request: { :params_encoder => Faraday::FlatParamsEncoder }) do |faraday|
       faraday.params["api_key"] = ENV["api_key"]
+      faraday.request :url_encoded
       faraday.adapter  Faraday.default_adapter
     end
     response = conn.get do |req|
@@ -12,7 +14,7 @@ class Station
       req.params['fuel_type'] = "LPG"
       req.params['radius']    = 6.0
       req.params['limit']     = 10
-      req.params['location']  = zip
+      req.params['location']  = (zip.to_i)
     end
     stations = JSON.parse(response.body)["fuel_stations"]
     stations.map do |station|
